@@ -4,4 +4,4 @@ worker: rq worker j_2
 worker: rq worker j_2
 worker: rq worker j_3
 worker: rq worker j_4
-we: python app.py
+web: python app.py
