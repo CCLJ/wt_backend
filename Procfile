@@ -4,7 +4,7 @@ worker: rq worker j_2
 worker: rq worker j_2
 worker: rq worker j_3
 worker: rq worker j_4
-web: gunicorn wt_backend:app
+web: gunicorn app
 init: python manage.py create_admin 
 init: python manage.py db init
 migrate: python manage.py db migrate
