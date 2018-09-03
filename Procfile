@@ -8,4 +8,4 @@ init: python manage.py create_admin
 init: python manage.py db init
 migrate: python manage.py db migrate
 upgrade: python manage.py db upgrade
-web: gunicorn -k gevent app:app
+web: gunicorn app:app
