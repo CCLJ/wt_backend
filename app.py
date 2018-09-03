@@ -78,6 +78,7 @@ def initialize_app(flask_app):
 
     socketio.on_namespace(chat.ChatNamespace('/chat'))
     socketio.on_namespace(contest.ContestNamespace('/contest'))
+    print("HEROKU PLSSS")
 
 # @werkzeug.serving.run_with_reloader
 def main():
