@@ -53,7 +53,39 @@ def hello():
 
 def initialize_app(flask_app):
     # configure_app(flask_app)
+    blueprint = Blueprint('api', __name__, url_prefix='/api')
+    api.init_app(blueprint)
+    api.add_namespace(users_namespace)
+    api.add_namespace(evaluator_namespace)
+    api.add_namespace(courses_namespace)
+    api.add_namespace(groups_namespace)
+    api.add_namespace(topics_namespace)
+    api.add_namespace(languages_namespace)
+    api.add_namespace(submissions_namespace)
+    api.add_namespace(problems_namespace)
+    api.add_namespace(assignments_namespace)
+    api.add_namespace(team_namespace)
+    api.add_namespace(statistics_namespace)
+    api.add_namespace(forum_namespace)
+    api.add_namespace(comment_namespace)
+    #api.add_namespace(contests_namespace)
+    api.add_namespace(messages_namespace)
+    api.add_namespace(recomendation_namespace)
+    flask_app.register_blueprint(blueprint)
 
+    # db.init_app(flask_app)
+
+    socketio.on_namespace(chat.ChatNamespace('/chat'))
+    socketio.on_namespace(contest.ContestNamespace('/contest'))
+    print("HEROKU PLSSS")
+    sys.stdout.flush()
+    
+
+# @werkzeug.serving.run_with_reloader
+def main():
+    # initialize_app(app)
+    # ---------------------------------------------------------------
+    
     blueprint = Blueprint('api', __name__, url_prefix='/api')
     api.init_app(blueprint)
     api.add_namespace(users_namespace)
@@ -81,10 +113,8 @@ def initialize_app(flask_app):
     print("HEROKU PLSSS")
     sys.stdout.flush()
 
-# @werkzeug.serving.run_with_reloader
-def main():
-    initialize_app(app)
-    #log.info('>>>>> Starting development server at http://{}/api/ <<<<<'.format(app.config['SERVER_NAME']))
+    # -------------------------------------------------------------
+
     logging.basicConfig(filename='example.log', level=logging.DEBUG)
     logging.info("New session ––– " + str(datetime.datetime.now()) + " ––– New session")
     gevent_server = gevent.wsgi.WSGIServer(('', 5000), app)
