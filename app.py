@@ -39,7 +39,6 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 app.config.from_object(config.DevelopmentConfig)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SERVER_NAME'] = 'https://still-bayou-82917.herokuapp.com/'
 # app.config['SQLALCHEMY_ECHO'] = True
 db.init_app(app)
 security = Security(app)
@@ -85,12 +84,10 @@ def initialize_app(flask_app):
 # @werkzeug.serving.run_with_reloader
 def main():
     initialize_app(app)
-
     logging.basicConfig(filename='example.log', level=logging.DEBUG)
     logging.info("New session ––– " + str(datetime.datetime.now()) + " ––– New session")
     gevent_server = gevent.wsgi.WSGIServer(('', 5000), app)
     gevent_server.serve_forever()
-    #app.run(debug=app.config['DEBUG'])
     socketio.run(app, port=5000, debug=True)
     app.run()
 
