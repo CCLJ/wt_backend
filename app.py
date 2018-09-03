@@ -39,7 +39,6 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 app.config.from_object(config.DevelopmentConfig)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 # app.config['SQLALCHEMY_ECHO'] = True
 db.init_app(app)
 security = Security(app)
