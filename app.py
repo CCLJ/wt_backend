@@ -73,12 +73,12 @@ def initialize_app(flask_app):
     api.add_namespace(recomendation_namespace)
     flask_app.register_blueprint(blueprint)
 
+    print("HEROKUUUSDFSF")
+
     # db.init_app(flask_app)
 
     socketio.on_namespace(chat.ChatNamespace('/chat'))
     socketio.on_namespace(contest.ContestNamespace('/contest'))
-    print("HEROKU PLSSS")
-    sys.stdout.flush()
     
 
 # @werkzeug.serving.run_with_reloader
@@ -88,8 +88,7 @@ def main():
     logging.info("New session ––– " + str(datetime.datetime.now()) + " ––– New session")
     gevent_server = gevent.wsgi.WSGIServer(('', 5000), app)
     gevent_server.serve_forever()
-    # socketio.run(app, port=5000, debug=True)
-    app.run()
+    socketio.run(app, port=5000, debug=True)
 
 if __name__ == '__main__':
     main()
