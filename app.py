@@ -91,7 +91,6 @@ def main():
     gevent_server.serve_forever()
     #app.run(debug=app.config['DEBUG'])
     socketio.run(app, port=5000, debug=True)
-    app.run()
 
 if __name__ == '__main__':
     main()
