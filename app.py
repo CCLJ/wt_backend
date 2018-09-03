@@ -74,6 +74,7 @@ def initialize_app(flask_app):
     flask_app.register_blueprint(blueprint)
 
     print("HEROKUUUSDFSF")
+    sys.stdout.flush()
 
     # db.init_app(flask_app)
 
