@@ -46,14 +46,9 @@ socketio = SocketIO(app)
 
 CORS(app)
 
-# @app.route('/')
-# def hello():
-#     return "Hello World!"
-
-
-# @app.route('/<name>')
-# def hello_name(name):
-#     return "Hello {}!".format(name)
+@app.route('/')
+def hello():
+    return "Hello World!"
 
 
 def initialize_app(flask_app):
