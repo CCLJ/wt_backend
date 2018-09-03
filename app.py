@@ -79,6 +79,7 @@ def initialize_app(flask_app):
     socketio.on_namespace(chat.ChatNamespace('/chat'))
     socketio.on_namespace(contest.ContestNamespace('/contest'))
     print("HEROKU PLSSS")
+    sys.stdout.flush()
 
 # @werkzeug.serving.run_with_reloader
 def main():
@@ -90,6 +91,7 @@ def main():
     gevent_server.serve_forever()
     #app.run(debug=app.config['DEBUG'])
     socketio.run(app, port=5000, debug=True)
+    app.run()
 
 if __name__ == '__main__':
     main()
