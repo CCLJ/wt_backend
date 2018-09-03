@@ -88,7 +88,7 @@ def main():
     logging.info("New session ––– " + str(datetime.datetime.now()) + " ––– New session")
     gevent_server = gevent.wsgi.WSGIServer(('', 5000), app)
     gevent_server.serve_forever()
-    socketio.run(app, port=5000, debug=True)
+    # socketio.run(app, port=5000, debug=True)
     app.run()
 
 if __name__ == '__main__':
