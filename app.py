@@ -46,20 +46,20 @@ socketio = SocketIO(app)
 
 CORS(app)
 
-@app.route('/')
-def hello():
-    return "Hello World!"
+# @app.route('/')
+# def hello():
+#     return "Hello World!"
 
 
-@app.route('/<name>')
-def hello_name(name):
-    return "Hello {}!".format(name)
+# @app.route('/<name>')
+# def hello_name(name):
+#     return "Hello {}!".format(name)
 
 
 def initialize_app(flask_app):
     # configure_app(flask_app)
 
-    blueprint = Blueprint('api', __name__, url_prefix='/')
+    blueprint = Blueprint('api', __name__, url_prefix='/api')
     api.init_app(blueprint)
     api.add_namespace(users_namespace)
     api.add_namespace(evaluator_namespace)
