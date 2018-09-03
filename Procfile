@@ -8,4 +8,4 @@ init: python manage.py create_admin
 init: python manage.py db init
 migrate: python manage.py db migrate
 upgrade: python manage.py db upgrade
-web: gunicorn --bind 0.0.0.0:$PORT app:app
+web: gunicorn -w 4 app:app

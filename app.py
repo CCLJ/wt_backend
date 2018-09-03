@@ -39,6 +39,7 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 app.config.from_object(config.DevelopmentConfig)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 # app.config['SQLALCHEMY_ECHO'] = True
 db.init_app(app)
 security = Security(app)
@@ -72,9 +73,6 @@ def initialize_app(flask_app):
     api.add_namespace(messages_namespace)
     api.add_namespace(recomendation_namespace)
     flask_app.register_blueprint(blueprint)
-
-    print("HEROKUUUSDFSF")
-    sys.stdout.flush()
 
     # db.init_app(flask_app)
 
