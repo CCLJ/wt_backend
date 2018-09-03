@@ -9,6 +9,7 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_DATABASE_URI = 'postgresql:///t247_dev'
+    DATABASE_URL = 'postgres://t247_dev'
 
 
 class ProductionConfig(Config):
