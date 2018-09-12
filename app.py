@@ -39,7 +39,7 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 app.config.from_object(config.ProductionConfig)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config.from_object(os.environ['APP_SETTINGS'])
+# app.config.from_object(os.environ['APP_SETTINGS'])
 db.init_app(app)
 security = Security(app)
 socketio = SocketIO(app)
