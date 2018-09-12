@@ -37,6 +37,7 @@ from flask_cors import CORS, cross_origin
 
 
 app = Flask(__name__)
+app.config.from_object(os.environ['APP_SETTINGS'])
 app.config.from_object(config.ProductionConfig)
 # app.config.from_object(os.environ['APP_SETTINGS'])
 
@@ -49,8 +50,8 @@ CORS(app)
 def hello():
     return "Hello World!"
 
-def create_db(db_instance, flask_app):
-    db_instance.init_app(flask_app)
+def create_db(db_instancep):
+    db_instance.init_app(app)
     db_instance.create_all()
 
 
