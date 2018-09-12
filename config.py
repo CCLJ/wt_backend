@@ -14,6 +14,8 @@ class Config(object):
 
 class ProductionConfig(Config):
     DEBUG = False
+    DB_NAME = "t247_dev"
+    DATABASE_URL = "postgresql://t247_dev"
 
 
 class StagingConfig(Config):
