@@ -46,6 +46,9 @@ socketio = SocketIO(app)
 
 CORS(app)
 
+@app.route('/')
+def hello():
+    return "Hello World!"
 
 
 def initialize_app(flask_app):
@@ -77,8 +80,9 @@ def main():
     initialize_app(app)
     logging.basicConfig(filename='example.log', level=logging.DEBUG)
     logging.info("New session ––– " + str(datetime.datetime.now()) + " ––– New session")
-    gevent_server = gevent.wsgi.WSGIServer(('', 5000), app)
-    gevent_server.serve_forever()
+    # gevent_server = gevent.wsgi.WSGIServer(('', 5000), app)
+    # gevent_server.serve_forever()
     socketio.run(app, port=5000, debug=True)
 
-main()
+if __name__ == '__main__':
+    main()
