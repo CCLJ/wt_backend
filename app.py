@@ -46,9 +46,6 @@ socketio = SocketIO(app)
 
 CORS(app)
 
-@app.route('/')
-def hello():
-    return "Hello World!"
 
 
 def initialize_app(flask_app):
@@ -68,18 +65,14 @@ def initialize_app(flask_app):
     api.add_namespace(statistics_namespace)
     api.add_namespace(forum_namespace)
     api.add_namespace(comment_namespace)
-    #api.add_namespace(contests_namespace)
     api.add_namespace(messages_namespace)
     api.add_namespace(recomendation_namespace)
     flask_app.register_blueprint(blueprint)
-
-    # db.init_app(flask_app)
 
     socketio.on_namespace(chat.ChatNamespace('/chat'))
     socketio.on_namespace(contest.ContestNamespace('/contest'))
     
 
-# @werkzeug.serving.run_with_reloader
 def main():
     initialize_app(app)
     logging.basicConfig(filename='example.log', level=logging.DEBUG)
@@ -88,5 +81,4 @@ def main():
     gevent_server.serve_forever()
     socketio.run(app, port=5000, debug=True)
 
-if __name__ == '__main__':
-    main()
+main()
