@@ -40,7 +40,7 @@ app = Flask(__name__)
 app.config.from_object(config.ProductionConfig)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # app.config.from_object(os.environ['APP_SETTINGS'])
-db.init_app(app)
+
 security = Security(app)
 socketio = SocketIO(app)
 
@@ -49,6 +49,10 @@ CORS(app)
 @app.route('/')
 def hello():
     return "Hello World!"
+
+def create_db(db_instance, flask_app):
+    db_instance.init_app(flask_app)
+    db_instance.create_all()
 
 
 def initialize_app(flask_app):
