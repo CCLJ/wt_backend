@@ -10,11 +10,13 @@ class Config(object):
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_DATABASE_URI = 'postgresql:///t247_dev'
     # SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class ProductionConfig(Config):
     DEBUG = False
     # DATABASE_URL = os.environ['DATABASE_URL']
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = "postgres://dtmqgqimaattms:3ff5ee89510c06f7dd95d40ae2d0e3cfaee6f4c1156182ae810eb91d5e438576@ec2-54-235-252-137.compute-1.amazonaws.com:5432/da413jdbc3tdcb"
     DATABASE_URL = "postgres://dtmqgqimaattms:3ff5ee89510c06f7dd95d40ae2d0e3cfaee6f4c1156182ae810eb91d5e438576@ec2-54-235-252-137.compute-1.amazonaws.com:5432/da413jdbc3tdcb"
 
