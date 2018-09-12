@@ -6,7 +6,7 @@ from app import app, db
 import config
 
 
-app.config.from_object(config.DevelopmentConfig)
+app.config.from_object(config.ProductionConfig)
 
 migrate = Migrate(app, db)
 manager = Manager(app)

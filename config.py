@@ -14,7 +14,6 @@ class Config(object):
 
 class ProductionConfig(Config):
     DEBUG = False
-    DB_NAME = "da413jdbc3tdcb"
     # DATABASE_URL = os.environ['DATABASE_URL']
     DATABASE_URL = "postgres://dtmqgqimaattms:3ff5ee89510c06f7dd95d40ae2d0e3cfaee6f4c1156182ae810eb91d5e438576@ec2-54-235-252-137.compute-1.amazonaws.com:5432/da413jdbc3tdcb"
 
