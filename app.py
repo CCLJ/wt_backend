@@ -39,8 +39,9 @@ from flask_cors import CORS, cross_origin
 def create_app():
     app = Flask(__name__)
     db.init_app(app)
+    db.create_all(app)
     return app
-    
+
 app = create_app()
 
 # app = Flask(__name__)
