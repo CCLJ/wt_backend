@@ -36,6 +36,10 @@ from sockets import ContestNamespace as contest
 from flask_cors import CORS, cross_origin
 
 
+def create_db(db_instance):
+    db_instance.init_app(app)
+    db_instance.create_all()
+
 app = Flask(__name__)
 # app.config.from_object(os.environ['APP_SETTINGS'])
 app.config.from_object(config.ProductionConfig)
@@ -48,10 +52,6 @@ CORS(app)
 @app.route('/')
 def hello():
     return "Hello World!"
-
-def create_db(db_instance):
-    db_instance.init_app(app)
-    db_instance.create_all()
 
 
 def initialize_app(flask_app):
