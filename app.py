@@ -36,14 +36,18 @@ from sockets import ContestNamespace as contest
 from flask_cors import CORS, cross_origin
 
 
-def create_db(db_instance):
-    db_instance.init_app(app)
-    db_instance.create_all()
+def create_app():
+    app = Flask(__name__)
+    db.init_app(app)
+    return app
+    
+app = create_app()
 
-app = Flask(__name__)
+# app = Flask(__name__)
 # app.config.from_object(os.environ['APP_SETTINGS'])
 app.config.from_object(config.ProductionConfig)
-create_db(db)
+# db.init_app(app)
+# db.create_all(app)
 security = Security(app)
 socketio = SocketIO(app)
 
