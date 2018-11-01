@@ -39,7 +39,7 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 # app.config.from_object(os.environ['APP_SETTINGS'])
 app.config.from_object(config.ProductionConfig)
-
+create_db(db)
 security = Security(app)
 socketio = SocketIO(app)
 
@@ -49,7 +49,7 @@ CORS(app)
 def hello():
     return "Hello World!"
 
-def create_db(db_instancep):
+def create_db(db_instance):
     db_instance.init_app(app)
     db_instance.create_all()
 
@@ -83,9 +83,7 @@ def main():
     initialize_app(app)
     logging.basicConfig(filename='example.log', level=logging.DEBUG)
     logging.info("New session ––– " + str(datetime.datetime.now()) + " ––– New session")
-    # gevent_server = gevent.wsgi.WSGIServer(('', 5000), app)
-    # gevent_server.serve_forever()
-    socketio.run(app, port=5000, debug=True)
+    socketio.run()
 
 if __name__ == '__main__':
     main()

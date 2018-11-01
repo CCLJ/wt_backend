@@ -1,11 +1,11 @@
-worker: redis-server
-worker: rq worker j_0
-worker: rq worker j_2
-worker: rq worker j_2
-worker: rq worker j_3
-worker: rq worker j_4
-init: python manage.py create_admin 
+redis: redis-server
+worker0: rq worker j_0
+worker1: rq worker j_2
+worker2: rq worker j_2
+worker3: rq worker j_3
+worker4: rq worker j_4
+create_admin: python manage.py create_admin 
 init: python manage.py db init
 migrate: python manage.py db migrate
 upgrade: python manage.py db upgrade
-web: gunicorn -w 4 app:app
+web: python manage.py runserver --host 0.0.0.0 --port ${PORT}
