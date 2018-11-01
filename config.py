@@ -9,16 +9,16 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_DATABASE_URI = 'postgresql:///t247_dev'
-    # SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 class ProductionConfig(Config):
     DEBUG = False
-    # DATABASE_URL = os.environ['DATABASE_URL']
+    # os.environ.get("DATABASE_URL")
+    # postgres://sbmvjnstodirdq:da2890133f95e99bfcf7cb5a3631e9b164ce2e8cd570e235aa718ba47a83230b@ec2-174-129-32-37.compute-1.amazonaws.com:5432/demqd7v1u6naso
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
-    DATABASE_URL = os.environ['DATABASE_URL']
+    SQLALCHEMY_DATABASE_URI = "postgres://sbmvjnstodirdq:da2890133f95e99bfcf7cb5a3631e9b164ce2e8cd570e235aa718ba47a83230b@ec2-174-129-32-37.compute-1.amazonaws.com:5432/demqd7v1u6naso"
+    DATABASE_URL = "postgres://sbmvjnstodirdq:da2890133f95e99bfcf7cb5a3631e9b164ce2e8cd570e235aa718ba47a83230b@ec2-174-129-32-37.compute-1.amazonaws.com:5432/demqd7v1u6naso"
 
 
 class StagingConfig(Config):
